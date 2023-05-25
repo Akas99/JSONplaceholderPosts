@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import MyButton from '../ui/MyButton'
 import { useDispatch, useSelector } from "react-redux";
 import {setSearchValue} from '../store/searchSlice'
@@ -8,9 +8,9 @@ export default function Searcher() {
     const { posts } = useSelector((state) => state.post);
     const { searchValue } = useSelector((state) => state.search);
     const dispatch=useDispatch()
-  
+    const allPosts=useRef(posts)
     const handleSearch = () => {
-      const filteredData = posts.filter((item) =>
+      const filteredData = allPosts.current.filter((item) =>
         item.title.toLowerCase().includes(searchValue.toLowerCase())
       );
     dispatch(getNewPosts(filteredData))

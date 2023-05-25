@@ -6,10 +6,8 @@ export const getPostAPI=createAsyncThunk(
     async(_,{rejectWithValue,dispatch})=>{
         try{
             const res=await axios.get(`https://jsonplaceholder.typicode.com/posts`)
-            console.log(res.data);
             dispatch(getNewPosts(res.data))
         }catch(e){
-            console.log(e)
             dispatch(isError(e.message))
             return rejectWithValue(e.message)
         }
@@ -20,6 +18,7 @@ const postSlice = createSlice({
     name: 'post',
     initialState: {
         posts:[],
+        post:[],
         error:'',
         currentPage: 1,
         itemsPerPage: 10,
