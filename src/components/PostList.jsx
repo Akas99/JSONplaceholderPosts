@@ -16,6 +16,7 @@ export default function PostList() {
   const item=posts && posts.map((item,index) => {
     return <PostItem 
     key={item.id}
+    id={item.id}
     title={item.title}
     body={item.body}
     userId={item.userId}

@@ -18,7 +18,6 @@ const postSlice = createSlice({
     name: 'post',
     initialState: {
         posts:[],
-        post:[],
         error:'',
         currentPage: 1,
         itemsPerPage: 10,
